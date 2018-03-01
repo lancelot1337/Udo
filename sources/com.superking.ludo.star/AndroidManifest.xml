@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="33" android:versionName="1.0.28" android:installLocation="auto" package="com.superking.ludo.star" platformBuildVersionCode="25" platformBuildVersionName="7.1.1">
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="25" />
+    <uses-feature android:glEsVersion="20000" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="com.superking.ludo.star.permission.C2D_MESSAGE" android:protectionLevel="signature|signatureOrSystem" />
+    <uses-permission android:name="com.superking.ludo.star.permission.C2D_MESSAGE" />
+    <application android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="io.branch.referral.BranchApp" android:launchMode="singleTask" android:allowBackup="true">
+        <meta-data android:name="android.app.lib_name" android:value="MyGame" />
+        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id" />
+        <activity android:theme="@*android:style/Theme.NoTitleBar.Fullscreen" android:label="@string/app_name" android:name="org.cocos2dx.cpp.AppActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="skls" android:host="open" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="skls.app.link" />
+            </intent-filter>
+        </activity>
+        <service android:name="org.cocos2dx.cpp.LocalNotificationService" />
+        <service android:name="com.superking.firebase.FirebaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="com.superking.firebase.FirebaseMessageReceiver">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <receiver android:name="org.cocos2dx.cpp.LocalNotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="io.branch.referral.InstallListener" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+        <activity android:theme="@style/com_facebook_activity_theme" android:label="@string/app_name" android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+        <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <meta-data android:name="io.fabric.ApiKey" android:value="5c46a59ce61f2964b9dd391bf516c933d2addbaf" />
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_jeFlWKnHO01dfHk6ePpmNecezupzmYK8" />
+        <meta-data android:name="com.bugsnag.android.API_KEY" android:value="68234cb8c3357fdcf218cdb283abc2f1" />
+        <activity android:name="com.ironsource.sdk.controller.ControllerActivity" android:configChanges="orientation|screenSize" android:hardwareAccelerated="true" />
+        <activity android:theme="@*android:style/Theme.Translucent" android:name="com.ironsource.sdk.controller.InterstitialActivity" android:configChanges="orientation|screenSize" android:hardwareAccelerated="true" />
+        <activity android:theme="@*android:style/Theme.Translucent" android:name="com.ironsource.sdk.controller.OpenUrlActivity" android:configChanges="orientation|screenSize" android:hardwareAccelerated="true" />
+        <activity android:theme="@*android:style/Theme.NoTitleBar.Fullscreen" android:name="com.unity3d.ads.adunit.AdUnitActivity" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:hardwareAccelerated="true" />
+        <activity android:theme="@*android:style/Theme.NoTitleBar.Fullscreen" android:name="com.unity3d.ads.adunit.AdUnitSoftwareActivity" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale" android:hardwareAccelerated="false" />
+        <provider android:name="com.facebook.FacebookContentProvider" android:exported="true" android:authorities="com.facebook.app.FacebookContentProvider391292647908643" />
+        <activity android:theme="@*android:style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity android:name="com.facebook.CustomTabMainActivity" />
+        <provider android:name="com.facebook.internal.FacebookInitProvider" android:exported="false" android:authorities="com.superking.ludo.star.FacebookInitProvider" />
+        <activity android:theme="@style/Theme_IAPTheme" android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity" />
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" />
+        <service android:name="com.google.firebase.messaging.FirebaseMessagingService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES" android:enabled="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.superking.ludo.star" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+        <service android:name="com.google.firebase.iid.FirebaseInstanceIdService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:exported="false" android:authorities="com.superking.ludo.star.firebaseinitprovider" android:initOrder="100" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.bugsnag.android.BUILD_UUID" android:value="6bedc268-5061-440b-af87-a07ce0ce6bb1" />
+    </application>
+</manifest>
